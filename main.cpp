@@ -20,9 +20,11 @@ int sign(int n)
 	return (rand() % 5 < 1) ? n *= -1 : n;
 }
 
-void dec_date(int date[12][12], int x, int y, int h_y, int h_x);
+void set_date(int date[12][12], int x, int y, int h_y, int h_x);
 
 void show(int date[12][12], int x, int y);
+
+void set_player(int player1[2], int player2[2], int x, int y, int h_y, int h_x);
 
 
 int main()
@@ -31,7 +33,7 @@ int main()
 	int x, y, half_X = 0, half_Y = 0;
 	int i, j;
 	int rem_x, rem_y;
-	int PLAYER[2];
+	int PLAYER1[2], PLAYER2[2];
 	
 	vector<string> V;
 
@@ -63,9 +65,9 @@ int main()
 		}
 	}
 
-	dec_date(date, x, y, half_Y, half_X);
+	set_date(date, x, y, half_Y, half_X);
 
-	show(date, x, y);
+	//show(date, x, y);
 
 	V.push_back(std::to_string(y));
 	V.push_back(" ");
@@ -75,10 +77,23 @@ int main()
 	for (i = 0; i < y; i++) {
 		for (j = 0; j < x; j++) {
 			V.push_back(std::to_string(date[i][j]));
-			V.push_back(" ");
+			
+			if(j < x - 1)	V.push_back(" ");
 		}
 		V.push_back(":");
 	}
+
+	set_player(PLAYER1, PLAYER2, x, y, half_X, half_Y);
+
+	V.push_back(std::to_string(PLAYER1[0]));
+	V.push_back(" ");
+	V.push_back(std::to_string(PLAYER1[1]));
+	V.push_back(":");
+
+	V.push_back(std::to_string(PLAYER2[0]));
+	V.push_back(" ");
+	V.push_back(std::to_string(PLAYER2[1]));
+	V.push_back(":");
 
 	for (i = 0; i < V.size(); i++) {
 		cout << V[i];
@@ -87,7 +102,7 @@ int main()
 	return 0;
 }
 
-void dec_date(int date[12][12], int x, int y, int h_y, int h_x)
+void set_date(int date[12][12], int x, int y, int h_y, int h_x)
 {
 	for (int h = 0; h <= h_y; h++) {
 		for (int i = 0; i <= h_x; i++) {
@@ -130,4 +145,16 @@ void show(int date[12][12], int x, int y)
 		}
 		cout << endl;
 	}
+}
+
+void set_player(int player1[2], int player2[2], int x, int y, int h_y, int h_x)
+{
+	player1[0] = rand() % h_y + 1;
+	player1[1] = rand() % h_x + 1;
+
+	player2[0] = y - player1[0] - 1;
+	player2[1] = x - player1[1] - 1;
+
+	player1[0]++;
+	player1[1]++;
 }
