@@ -67,7 +67,7 @@ int main()
 
 	set_date(date, x, y, half_Y, half_X);
 
-	//show(date, x, y);
+	show(date, x, y);
 
 	V.push_back(std::to_string(y));
 	V.push_back(" ");
@@ -85,14 +85,14 @@ int main()
 
 	set_player(PLAYER1, PLAYER2, x, y, half_X, half_Y);
 
-	V.push_back(std::to_string(PLAYER1[0]));
+	V.push_back("1");
 	V.push_back(" ");
-	V.push_back(std::to_string(PLAYER1[1]));
+	V.push_back("1");
 	V.push_back(":");
 
-	V.push_back(std::to_string(PLAYER2[0]));
+	V.push_back(std::to_string(y - 1));
 	V.push_back(" ");
-	V.push_back(std::to_string(PLAYER2[1]));
+	V.push_back(std::to_string(x - 1));
 	V.push_back(":");
 
 	for (i = 0; i < V.size(); i++) {
