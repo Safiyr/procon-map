@@ -90,9 +90,9 @@ int main()
 	V.push_back("1");
 	V.push_back(":");
 
-	V.push_back(std::to_string(y - 1));
-	V.push_back(" ");
 	V.push_back(std::to_string(x - 1));
+	V.push_back(" ");
+	V.push_back(std::to_string(y - 1));
 	V.push_back(":");
 
 	for (i = 0; i < V.size(); i++) {
