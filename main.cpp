@@ -12,7 +12,7 @@ inline void InitRand()
 
 inline int my_random()
 {
-	return rand() % 4;
+	return rand() % 13;
 }
 
 int sign(int n)
@@ -34,7 +34,7 @@ int main()
 	int i, j;
 	int rem_x, rem_y;
 	int PLAYER1[2], PLAYER2[2];
-	
+
 	vector<string> V;
 
 	InitRand();
@@ -77,7 +77,7 @@ int main()
 	for (i = 0; i < y; i++) {
 		for (j = 0; j < x; j++) {
 			V.push_back(std::to_string(date[i][j]));
-			
+
 			if(j < x - 1)	V.push_back(" ");
 		}
 		V.push_back(":");
@@ -85,14 +85,16 @@ int main()
 
 	set_player(PLAYER1, PLAYER2, x, y, half_X, half_Y);
 
-	V.push_back("1");
+	V.push_back("2");
 	V.push_back(" ");
-	V.push_back("1");
+	V.push_back("2");
 	V.push_back(":");
 
-	V.push_back(std::to_string(x - 1));
+	int ap1 = y;
+	int ap2 = x;
+	V.push_back(std::to_string(ap1 - 1));
 	V.push_back(" ");
-	V.push_back(std::to_string(y - 1));
+	V.push_back(std::to_string(ap2 - 1));
 	V.push_back(":");
 
 	for (i = 0; i < V.size(); i++) {
